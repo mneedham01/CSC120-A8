@@ -6,16 +6,16 @@ public class Raven //implements Contract.java{
     String lookingAtWithBeadyEyes;
     boolean holdingWithMyClaws;
     String itemThatIsMINE="";
-    boolean strutting; 
-    boolean soaring;
-    boolean supervising;
+    boolean deservedlyResting;
+    int xPosition; 
+    int yPosition;
 
     public Raven(String name){
         this.lookingAtWithBeadyEyes="Sky";
         this.holdingWithMyClaws=false;
-        this.strutting= false;
-        this.soaring= false;
-        this.supervising=false; 
+        this.deservedlyResting=false; 
+        this.xPosition=50;
+        this.yPosition=50;
 
     }
 
@@ -48,7 +48,30 @@ public class Raven //implements Contract.java{
     }
 
     public boolean walk(String direction){
-
+        if (direction!= "LEFT" ||direction!="RIGHT"||direction!="FORWARD"||direction!="BACKWARD"){
+            throw new RuntimeException("The only valid directions a raven can walk are 'LEFT','RIGHT','FORWARD', or 'BACKWARD'.");
+        }
+        if (direction=="LEFT"){
+            this.xPosition -=5;
+            System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+", "+this.yPosition+").");
+            return true; 
+        }
+        if (direction=="RIGHT"){
+            this.xPosition +=5;
+            System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+", "+this.yPosition+").");
+            return true;
+        }
+        if (direction=="FORWARD"){
+            this.yPosition+=5;
+            System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+", "+this.yPosition+").");
+            return true;
+        }
+        if (direction=="BACKWARD"){
+            this.yPosition-=5;
+            System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+", "+this.yPosition+").");
+            return true; 
+        }
+        return false;
     }
 
     public boolean fly(int x, int y){
