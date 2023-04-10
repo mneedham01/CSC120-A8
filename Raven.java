@@ -42,7 +42,8 @@ public class Raven //implements Contract.java{
     }
 
     public void examine(String item){
-
+        this.lookingAtWithBeadyEyes=item; 
+        System.out.println("You are examining "+item);
     }
 
     public void use(String item){
