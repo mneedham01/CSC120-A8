@@ -89,7 +89,10 @@ public class Raven //implements Contract.java{
     }
 
     public boolean fly(int x, int y){
-
+        this.xPosition=x;
+        this.yPosition=y;
+        System.out.println("You have flown majestically to a new destination: ("+this.xPosition+", "+this.yPosition+").");
+        return true;
     }
 
     public Number shrink(){
