@@ -12,8 +12,8 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 _____ 10 pts: The class meaningfully implements each of the methods in described in the `Contract` interface:
 
-      _____ `void grab(String item);`
-      _____ `String drop(String item);`
+      YES `void grab(String item);`
+      YES `String drop(String item);`
       _____ `void examine(String item);`
       _____ `void use(String item);`
       _____ `boolean walk(String direction);`
