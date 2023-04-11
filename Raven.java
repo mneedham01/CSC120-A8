@@ -108,41 +108,39 @@ public class Raven implements Contract.java
         if (direction!= "LEFT" &&direction!="RIGHT"&&direction!="FORWARD"&&direction!="BACKWARD"){
             throw new RuntimeException("The only valid directions a raven can walk are 'LEFT','RIGHT','FORWARD', or 'BACKWARD'.");
         }
+        this.previousXPosition=this.xPosition;
+        this.previousYPosition=this.yPosition;
         if (direction=="LEFT"){
-            if (xPosition<5){
+            if (this.xPosition<5){
                 throw new RuntimeException("You cannot walk left as you are near the border of your area. Try walking right.");
             }
-            this.previousXPosition=this.xPosition;
             this.xPosition -=5;
             this.deservedlyResting=false;
             System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+" miles, "+this.yPosition+" miles).");
             return true; 
         }
         if (direction=="RIGHT"){
-            if (xPosition>95){
+            if (this.xPosition>95){
                 throw new RuntimeException("You cannot walk right as you are near the border of your area. Try walking left.");
             }
-            this.previousXPosition=this.xPosition;
             this.xPosition +=5;
             this.deservedlyResting=false;
-            System.out.println("You are strutting proudly to your new destination: "+this.xPosition+" miles, "+this.yPosition+" miles).");
+            System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+" miles, "+this.yPosition+" miles).");
             return true;
         }
         if (direction=="FORWARD"){
-            if (yPosition>95){
+            if (this.yPosition>95){
                 throw new RuntimeException("You cannot walk forward as you are near the border of your area. Try walking backward.");
             }
-            this.previousYPosition=this.yPosition;
             this.yPosition+=5;
             this.deservedlyResting=false;
             System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+" miles, "+this.yPosition+" miles).");
             return true;
         }
         if (direction=="BACKWARD"){
-            if (yPosition<5){
+            if (this.yPosition<5){
                 throw new RuntimeException("You cannot walk backward as you are near the border of your area. Try walking forward.");
             }
-            this.previousYPosition=this.yPosition;
             this.yPosition-=5;
             this.deservedlyResting=false;
             System.out.println("You are strutting proudly to your new destination: ("+this.xPosition+" miles, "+this.yPosition+" miles).");
@@ -220,6 +218,12 @@ public class Raven implements Contract.java
         this.yPosition=this.previousYPosition;
         this.deservedlyResting=false;
         System.out.println("You are now back at ("+this.xPosition+", "+this.yPosition+").");
+    }
+
+    public String getCoordinates(){
+        System.out.println("You were most recently at ("+this.previousXPosition+", "+this.previousXPosition+").");
+        System.out.println("You are currently at ("+this.xPosition+", "+this.yPosition+").");
+        return("You were most recently at ("+this.previousXPosition+", "+this.previousXPosition+"). You are currently at ("+this.xPosition+", "+this.yPosition+").");
     }
 
     /*
@@ -327,12 +331,16 @@ public class Raven implements Contract.java
         System.out.println("\n");
         //testing walking 
         Harold.walk("LEFT");
+        Harold.getCoordinates();
         System.out.println("\n");
         Harold.walk("RIGHT");
+        Harold.getCoordinates();
         System.out.println("\n");
         Harold.walk("FORWARD");
+        Harold.getCoordinates();
         System.out.println("\n");
         Harold.walk("BACKWARD");
+        Harold.getCoordinates();
         System.out.println("\n");
         //test undo 
         Harold.undo();
