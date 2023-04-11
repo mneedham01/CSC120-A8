@@ -187,14 +187,17 @@ public class Raven implements Contract.java
 
     /*
      * grow method to unfurl wings 
+     * @return: integer(just for Contract.java)
      */
-    public void grow(){
+    public Number grow(){
         if(!this.wingsIn){
             throw new RuntimeException("Your wings are already splayed.");
         }
         this.wingsIn=false;
         this.deservedlyResting=false;
         System.out.println("You wings are splayed and you're ready to fly.");
+        int number = 0;
+        return number; 
     }
 
     /*
