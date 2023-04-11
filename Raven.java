@@ -1,5 +1,7 @@
 
-
+/*
+ * Raven class with abilities from Contract.java 
+ */
 public class Raven implements Contract.java
 {
 
@@ -15,6 +17,11 @@ public class Raven implements Contract.java
     int xPosition; 
     int yPosition;
 
+    /*
+     * Constructor for Raven object 
+     * @param: String name
+     * @returns: Raven object 
+     */
     public Raven(String name){
         this.name=name;
         this.lookingAtWithBeadyEyes="Sky";
@@ -29,6 +36,10 @@ public class Raven implements Contract.java
 
     }
 
+    /*
+     * Can grab and thus hold object 
+     * @param: String item 
+     */
     public void grab(String item){
         if (this.holdingWithMyClaws){
             throw new RuntimeException("You are already holding something in your claws. Drop it and then try again.");
@@ -39,6 +50,10 @@ public class Raven implements Contract.java
         this.deservedlyResting=false;
     }
 
+    /*
+     * Can drop item 
+     * @param: String item 
+     */
     public String drop(String item){
         if (!this.holdingWithMyClaws){
             throw new RuntimeException("You are not holding anything in your claws. Grab something in order to drop it.");
@@ -54,12 +69,20 @@ public class Raven implements Contract.java
         return item;
     }
 
+    /*
+     * Can examine (look at) item 
+     * @param: String item 
+     */
     public void examine(String item){
         this.lookingAtWithBeadyEyes=item; 
         this.deservedlyResting=false;
         System.out.println("You are examining "+item);
     }
 
+    /*
+     * Can use item if not already using an item, if you're not holding something, and if you're holding the item you're using
+     * @param: String item 
+     */
     public void use(String item){
         if(this.busyUsingMyItem){
             throw new RuntimeException("You are already using an item. Drop it in order to use a new item.");
@@ -76,6 +99,11 @@ public class Raven implements Contract.java
         
     }
 
+    /*
+     * Can walk 5 miles in four set directions 
+     * @param: String direction
+     * @returns: boolean
+     */
     public boolean walk(String direction){
         if (direction!= "LEFT" &&direction!="RIGHT"&&direction!="FORWARD"&&direction!="BACKWARD"){
             throw new RuntimeException("The only valid directions a raven can walk are 'LEFT','RIGHT','FORWARD', or 'BACKWARD'.");
@@ -123,6 +151,9 @@ public class Raven implements Contract.java
         return false;
     }
 
+    /*
+     * 
+     */
     public boolean fly(int x, int y){
         if(this.wingsIn){
             throw new RuntimeException("Your wings are in, so you cannot fly. Grow, and then try again.");
@@ -139,17 +170,24 @@ public class Raven implements Contract.java
         return true;
     }
 
+    /*
+     * shrink method so raven folds in its wings
+     * @return: integer (just for Contract.java)
+     */
     public Number shrink(){
         if(this.wingsIn){
             throw new RuntimeException("Your wings are already folded in.");
         }
         this.wingsIn=true;
         System.out.println("Your beautiful wings are folded in and you're ready to rest.");
-        int number = 4;
+        int number = 0;
         return number; 
 
     }
 
+    /*
+     * grow method to unfurl wings 
+     */
     public void grow(){
         if(!this.wingsIn){
             throw new RuntimeException("Your wings are already splayed.");
@@ -159,6 +197,9 @@ public class Raven implements Contract.java
         System.out.println("You wings are splayed and you're ready to fly.");
     }
 
+    /*
+     * rest method (if wings are in)
+     */
     public void rest(){
         if (!this.wingsIn){
             throw new RuntimeException("Your wings are splayed. Shrink in order to tuck in your wings in order to rest.");
@@ -167,6 +208,9 @@ public class Raven implements Contract.java
         System.out.println("You are taking a deserved rest.");
     }
 
+    /*
+     * undo method to bring raven back to coordinates before walking or flying 
+     */
     public void undo(){
         System.out.println("The undo funtion brings you back to where you were before you last walked or flew.");
         this.xPosition=this.previousXPosition;
@@ -175,6 +219,9 @@ public class Raven implements Contract.java
         System.out.println("You are now back at ("+this.xPosition+", "+this.yPosition+").");
     }
 
+    /*
+     * toString method that combines all the information 
+     */
     public String toString(){
         String toReturn="You are a raven. Your name is "+this.name;
         toReturn+=". You are looking at the "+this.lookingAtWithBeadyEyes+" with beady eyes.";
@@ -206,6 +253,9 @@ public class Raven implements Contract.java
         return toReturn;
     }
 
+    /*
+     * Main method for testing 
+     */
     public static void main(String args[]){
         Raven Harold=new Raven("Harold");
         System.out.println(Harold);
@@ -347,11 +397,6 @@ public class Raven implements Contract.java
         } catch (Exception e){
             System.out.println(e);
         }
-
-        
-
-
-
 
 
     }
