@@ -221,7 +221,7 @@ public class Raven implements Contract.java
     }
 
     public String getCoordinates(){
-        System.out.println("You were most recently at ("+this.previousXPosition+", "+this.previousXPosition+").");
+        System.out.println("You were most recently at ("+this.previousXPosition+", "+this.previousYPosition+").");
         System.out.println("You are currently at ("+this.xPosition+", "+this.yPosition+").");
         return("You were most recently at ("+this.previousXPosition+", "+this.previousXPosition+"). You are currently at ("+this.xPosition+", "+this.yPosition+").");
     }
